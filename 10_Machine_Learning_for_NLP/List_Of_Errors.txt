@@ -1,0 +1,68 @@
+---------------------------------------------------------------------------
+LookupError                               Traceback (most recent call last)
+Cell In[5], line 4
+      1 ## Tokenization
+      2 ## paragraphs --> sentences
+      3 from nltk.tokenize import sent_tokenize
+----> 4 sent_tokenize(corpus, language="english")
+
+File d:\CodeSpace\DataScience-AI\udemy\GenAI-Langchain-HuggingFace\learn-GenerativeAi-with-Langchain-Huggingface\vevn314\Lib\site-packages\nltk\tokenize\__init__.py:119, in sent_tokenize(text, language)
+    109 def sent_tokenize(text, language="english"):
+    110     """
+    111     Return a sentence-tokenized copy of *text*,
+    112     using NLTK's recommended sentence tokenizer
+   (...)    117     :param language: the model name in the Punkt corpus
+    118     """
+--> 119     tokenizer = _get_punkt_tokenizer(language)
+    120     return tokenizer.tokenize(text)
+
+File d:\CodeSpace\DataScience-AI\udemy\GenAI-Langchain-HuggingFace\learn-GenerativeAi-with-Langchain-Huggingface\vevn314\Lib\site-packages\nltk\tokenize\__init__.py:105, in _get_punkt_tokenizer(language)
+     96 @functools.lru_cache
+     97 def _get_punkt_tokenizer(language="english"):
+     98     """
+     99     A constructor for the PunktTokenizer that utilizes
+    100     a lru cache for performance.
+   (...)    103     :type language: str
+    104     """
+--> 105     return PunktTokenizer(language)
+
+File d:\CodeSpace\DataScience-AI\udemy\GenAI-Langchain-HuggingFace\learn-GenerativeAi-with-Langchain-Huggingface\vevn314\Lib\site-packages\nltk\tokenize\punkt.py:1744, in PunktTokenizer.__init__(self, lang)
+   1742 def __init__(self, lang="english"):
+   1743     PunktSentenceTokenizer.__init__(self)
+-> 1744     self.load_lang(lang)
+
+File d:\CodeSpace\DataScience-AI\udemy\GenAI-Langchain-HuggingFace\learn-GenerativeAi-with-Langchain-Huggingface\vevn314\Lib\site-packages\nltk\tokenize\punkt.py:1749, in PunktTokenizer.load_lang(self, lang)
+   1746 def load_lang(self, lang="english"):
+   1747     from nltk.data import find
+-> 1749     lang_dir = find(f"tokenizers/punkt_tab/{lang}/")
+   1750     self._params = load_punkt_params(lang_dir)
+   1751     self._lang = lang
+
+File d:\CodeSpace\DataScience-AI\udemy\GenAI-Langchain-HuggingFace\learn-GenerativeAi-with-Langchain-Huggingface\vevn314\Lib\site-packages\nltk\data.py:696, in find(resource_name, paths)
+    694 sep = "*" * 70
+    695 resource_not_found = f"\n{sep}\n{msg}\n{sep}\n"
+--> 696 raise LookupError(resource_not_found)
+
+LookupError: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - 'C:\\Users\\Dharanidhar/nltk_data'
+    - 'd:\\CodeSpace\\DataScience-AI\\udemy\\GenAI-Langchain-HuggingFace\\learn-GenerativeAi-with-Langchain-Huggingface\\vevn314\\nltk_data'
+    - 'd:\\CodeSpace\\DataScience-AI\\udemy\\GenAI-Langchain-HuggingFace\\learn-GenerativeAi-with-Langchain-Huggingface\\vevn314\\share\\nltk_data'
+    - 'd:\\CodeSpace\\DataScience-AI\\udemy\\GenAI-Langchain-HuggingFace\\learn-GenerativeAi-with-Langchain-Huggingface\\vevn314\\lib\\nltk_data'
+    - 'C:\\Users\\Dharanidhar\\AppData\\Roaming\\nltk_data'
+    - 'C:\\nltk_data'
+    - 'D:\\nltk_data'
+    - 'E:\\nltk_data'
+**********************************************************************
+==============================================================================================================================================================
